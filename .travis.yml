@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t dendupe/docker-react -f Dockerfile.dev .
+
+script:
+  docker run -e CI=true dendupe/docker-react npm run test
